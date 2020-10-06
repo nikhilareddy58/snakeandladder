@@ -1,0 +1,12 @@
+package com.example.model;
+
+public class Slot {
+	
+	
+	private int slotId;
+	
+	private boolean isSlotFree;
+	
+	
+
+}

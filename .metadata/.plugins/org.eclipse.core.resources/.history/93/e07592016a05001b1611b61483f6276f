@@ -1,0 +1,9 @@
+package com.example.apiutil;
+
+public class UpdateGameResponse {
+	
+	private int newPosition;
+	
+	private int 
+
+}

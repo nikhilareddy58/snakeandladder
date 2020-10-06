@@ -1,0 +1,8 @@
+package com.example.apiutil;
+
+public class UpdateGameReq {
+	
+	private int playerId;
+	private int diceValue;
+
+}

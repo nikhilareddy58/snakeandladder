@@ -1,0 +1,37 @@
+package com.example.model;
+
+public class Parking {
+	
+	private Vehicle parkedVehicle;
+	
+	private Slot allocatedSlot;
+	
+	private int parkingId;
+
+	public Vehicle getParkedVehicle() {
+		return parkedVehicle;
+	}
+
+	public void setParkedVehicle(Vehicle parkedVehicle) {
+		this.parkedVehicle = parkedVehicle;
+	}
+
+	public Slot getAllocatedSlot() {
+		return allocatedSlot;
+	}
+
+	public void setAllocatedSlot(Slot allocatedSlot) {
+		this.allocatedSlot = allocatedSlot;
+	}
+
+	public int getParkingId() {
+		return parkingId;
+	}
+
+	public void setParkingId(int parkingId) {
+		this.parkingId = parkingId;
+	}
+	
+	
+
+}

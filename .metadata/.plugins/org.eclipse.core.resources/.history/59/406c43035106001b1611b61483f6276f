@@ -1,0 +1,13 @@
+package com.example.rules;
+
+public class AbstractRuleValidator {
+	
+	private AbstractRuleValidator abstractRuleValidator;
+
+
+	public void setAbstractRuleValidator(AbstractRuleValidator abstractRuleValidator) {
+		this.abstractRuleValidator = abstractRuleValidator;
+	}
+	
+
+}

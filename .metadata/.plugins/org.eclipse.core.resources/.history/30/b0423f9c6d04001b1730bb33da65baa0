@@ -1,0 +1,9 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+public class SlotDao {
+	
+	public HashMap<Integer,Boolean> slotsMap= new HashMap();
+
+}

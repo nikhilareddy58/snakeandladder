@@ -1,0 +1,37 @@
+package com.example.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dao.PlayerDao;
+import com.example.model.Player;
+
+@Service
+public class GameService {
+	
+	final static int NO_OF_PLAYERS=4;
+	
+	@Autowired
+	PlayerDao playerDao;
+	
+	public void intializeGame() {
+		
+		//createUsers
+		
+		List<Player> playersList=new ArrayList<Player>();
+		for(int i=0;i<NO_OF_PLAYERS;i++) {
+			playersList.add(new Player(i));
+		}
+		
+		playerDao.initializePlayers(playersList);
+		
+		
+		//initialize ladders
+		List<Ladder> ladders= new ArrayList<>();
+		
+	}
+
+}

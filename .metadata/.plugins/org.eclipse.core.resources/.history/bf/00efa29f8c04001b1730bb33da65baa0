@@ -1,0 +1,20 @@
+package com.example.controller;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.model.Parking;
+import com.example.model.Vehicle;
+
+@RestController
+public class ParkingController {
+	
+	
+	
+	public Parking createParking(@RequestBody Vehicle vehicle,@RequestBody String type) {
+		
+	}
+	
+	
+
+}

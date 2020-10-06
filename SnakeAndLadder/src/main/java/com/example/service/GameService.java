@@ -1,0 +1,119 @@
+package com.example.service;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.apiutil.UpdateGameReq;
+import com.example.dao.LadderDao;
+import com.example.dao.PlayerDao;
+import com.example.dao.SnakeDao;
+import com.example.model.Board;
+import com.example.model.GameStatus;
+import com.example.model.Ladder;
+import com.example.model.Player;
+import com.example.model.Snake;
+import com.example.rules.RulesExecutor;
+
+@Service
+public class GameService {
+
+	final static int NO_OF_PLAYERS = 4;
+	final static int WINNING_POSITION = 100;
+
+	@Autowired
+	PlayerDao playerDao;
+
+	@Autowired
+	LadderDao ladderDao;
+
+	@Autowired
+	SnakeDao snakeDao;
+
+	@Autowired
+	RulesExecutor rulesExecutor;
+
+	static Board board = new Board();
+	static Queue<Player> playersList = new LinkedList<Player>();
+	static List<Ladder> ladders = new ArrayList<>();
+	static List<Snake> snakes = new ArrayList<>();
+
+	public Board intializeGame() {
+
+		// createUsers
+
+		for (int i = 0; i < NO_OF_PLAYERS; i++) {
+			playersList.add(new Player(i, 0));
+		}
+
+		playerDao.initializePlayers(playersList);
+
+		// initialize ladders
+		ladders.add(new Ladder(10, 34));
+		ladders.add(new Ladder(11, 35));
+		ladders.add(new Ladder(30, 40));
+
+		ladderDao.initializeLadders(ladders);
+
+		// initialize ladders
+		snakes.add(new Snake(44, 20));
+		snakes.add(new Snake(58, 12));
+		snakes.add(new Snake(79, 32));
+
+		snakeDao.initializeSnakes(snakes);
+
+		board.setLadders(ladders);
+		board.setSnakes(snakes);
+		board.setPlayersList(playersList);
+		board.setCurrentPlayer(getCurrentPlayer());
+		board.setGameStatus(GameStatus.INPROGRESS);
+
+		System.out.println("Successfully  created");
+
+		return board;
+
+	}
+
+	public Board updateMove(UpdateGameReq req) {
+		// validate
+		rulesExecutor.executeAllUpdateMoveRules(req);
+		int player=req.getPlayerId();
+		int diceValue=req.getDiceValue();
+		Player tempPlayer = playerDao.getPlayer(player);
+		int newposition = tempPlayer.getPosition() + diceValue;
+		if (newposition <= WINNING_POSITION) {
+			if (snakeDao.isSnake(newposition)) {
+				newposition = snakeDao.getSnake(newposition);
+			}
+			if (ladderDao.isLadder(newposition)) {
+				newposition = ladderDao.getLadder(newposition);
+			}
+		} else {
+			newposition = tempPlayer.getPosition();
+		}
+		// update player
+		tempPlayer.setPosition(newposition);
+		playerDao.upadtePlayer(tempPlayer);
+
+		// updateBoard
+		board.setCurrentPlayer(getCurrentPlayer());
+		if (isGameCompleted(newposition))
+			board.setGameStatus(GameStatus.COMPLETED);
+
+		return board;
+
+	}
+
+	private int getCurrentPlayer() {
+		playersList.add(playersList.poll());
+		return playersList.peek().getUserId();
+	}
+
+	private boolean isGameCompleted(int position) {
+		return position == WINNING_POSITION;
+	}
+}

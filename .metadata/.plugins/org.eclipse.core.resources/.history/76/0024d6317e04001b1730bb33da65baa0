@@ -1,0 +1,15 @@
+package com.example.service;
+
+import com.example.model.Vehicle;
+
+public class VehicleFactory {
+	
+	
+	public Vehicle getVehicle(String type) {
+		
+		
+		if()
+		
+	}
+
+}

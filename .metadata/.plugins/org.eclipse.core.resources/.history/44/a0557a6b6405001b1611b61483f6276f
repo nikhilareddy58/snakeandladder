@@ -1,0 +1,21 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public class LadderDao {
+	
+public static HashMap<Integer, Integer>  gameMap= new HashMap<>();
+	
+	public void updateGame(int player,int position){
+		gameMap.put(player, position);
+	}
+	
+	public void getGame(int player){
+		gameMap.get(player);
+	}
+
+}

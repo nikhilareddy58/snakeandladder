@@ -1,0 +1,25 @@
+package com.example.model;
+
+public class Bus extends Vehicle{
+	
+    private int slotsReq;	
+	
+
+	public Bus(String registrationId, String userName) {
+		super(registrationId, userName);
+		this.slotsReq=6;
+	}
+
+
+
+	public int getSlotsReq() {
+		return slotsReq;
+	}
+
+
+
+	public void setSlotsReq(int slotsReq) {
+		this.slotsReq = slotsReq;
+	}
+
+}

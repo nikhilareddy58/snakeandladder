@@ -1,0 +1,9 @@
+package com.example.exceptions;
+
+public class InvalidDiceCountException {
+	
+	public InvalidDiceCountException(String message) {
+	    super(message);
+	  }
+
+}

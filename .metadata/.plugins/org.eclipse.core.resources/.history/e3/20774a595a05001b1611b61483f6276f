@@ -1,0 +1,11 @@
+package com.example.model;
+
+public class Ladder {
+	
+	private int start;
+	
+	private int end;
+	
+	
+
+}

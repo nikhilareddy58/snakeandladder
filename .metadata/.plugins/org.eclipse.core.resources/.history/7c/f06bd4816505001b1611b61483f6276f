@@ -1,0 +1,15 @@
+package com.example.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class GameService {
+	
+	final static int NO_OF_PLAYERS=4;
+	
+	public void intializeGame() {
+		//createUsers
+		
+	}
+
+}

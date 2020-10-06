@@ -1,0 +1,12 @@
+package com.example.model;
+
+public class Car extends Vehicle{
+	
+	
+	public Car() {
+		this.slotsReq=4;
+	}
+
+	
+	
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.example.rules.InvalidPlayerException&apos; to &apos;InvalidPlayerValidator&apos;&#x0A;- Original project: &apos;TicTacToe&apos;&#x0A;- Original element: &apos;com.example.rules.InvalidPlayerException&apos;&#x0A;- Renamed element: &apos;com.example.rules.InvalidPlayerValidator&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;InvalidPlayerException&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.rules{InvalidPlayerException.java[InvalidPlayerException" matchStrategy="1" name="InvalidPlayerValidator" qualified="false" references="true" similarDeclarations="false" stamp="1601824007963" textual="false" version="1.0"/>
+</session>

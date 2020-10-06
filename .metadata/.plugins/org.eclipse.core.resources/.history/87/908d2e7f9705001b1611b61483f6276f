@@ -1,0 +1,21 @@
+package com.example.rules;
+
+import com.example.apiutil.UpdateGameReq;
+import com.example.exceptions.RulesException;
+
+public abstract class IRuleValidator {
+
+	IRuleValidator nextExecutor;
+
+	public void setNextExecutor(IRuleValidator nextExecutor) {
+		this.nextExecutor = nextExecutor;
+	}
+
+	public void executeRule(UpdateGameReq req) {
+		execute(req);
+		nextExecutor.executeRule(req);
+	}
+
+	public abstract void execute(UpdateGameReq req) throws RulesException;
+
+}

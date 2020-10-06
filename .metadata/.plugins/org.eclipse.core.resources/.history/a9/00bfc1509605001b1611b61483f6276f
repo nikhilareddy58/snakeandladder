@@ -1,0 +1,12 @@
+package com.example.rules;
+
+public class DiceCountValidator extends IRuleValidator{
+
+	@Override
+	public void execute() {
+		
+	}
+	
+	
+
+}

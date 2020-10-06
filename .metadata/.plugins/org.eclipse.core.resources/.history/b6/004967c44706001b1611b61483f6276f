@@ -1,0 +1,12 @@
+package com.example.dao;
+
+public class BoardDao {
+	
+	
+	private static int [][] boardMatrix;
+	
+    public void initializeBoard(int size) {
+    	boardMatrix=new int[size][size];
+    }
+
+}

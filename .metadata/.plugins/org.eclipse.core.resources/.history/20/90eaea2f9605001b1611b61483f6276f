@@ -1,0 +1,20 @@
+package com.example.rules;
+
+import com.example.apiutil.UpdateGameReq;
+
+public abstract class IRuleExecutor {
+
+	IRuleExecutor nextExecutor;
+
+	public void setNextExecutor(IRuleExecutor nextExecutor) {
+		this.nextExecutor = nextExecutor;
+	}
+
+	public void executeRule(UpdateGameReq req) {
+		execute();
+		nextExecutor.executeRule(req);
+	}
+
+	public abstract void execute();
+
+}

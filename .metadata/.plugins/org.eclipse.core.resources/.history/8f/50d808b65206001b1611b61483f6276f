@@ -1,0 +1,22 @@
+package com.example.rules;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.apiutil.UpdateMoveReq;
+import com.example.dao.PlayerDao;
+
+public class InvalidPlayerException extends AbstractRuleValidator {
+
+	@Override
+	public void execute(UpdateMoveReq req) {
+		
+		@Autowired
+		PlayerDao playerDao;
+		
+		if(req.getPlayerId()) {
+			
+		}
+		
+	}
+
+}

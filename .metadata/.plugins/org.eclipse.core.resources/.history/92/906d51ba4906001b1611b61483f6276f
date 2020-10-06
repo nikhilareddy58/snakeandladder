@@ -1,0 +1,14 @@
+package com.example.service;
+
+import java.util.List;
+
+import com.example.model.Player;
+
+public class PlayerService {
+	
+	
+	public void initializePlayers(List<Player> players) {
+		
+	}
+
+}

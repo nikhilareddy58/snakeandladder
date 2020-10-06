@@ -1,0 +1,20 @@
+package com.example.rules;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.apiutil.UpdateMoveReq;
+
+public class InvalidPlayerException extends AbstractRuleValidator {
+
+	@Override
+	public void execute(UpdateMoveReq req) {
+		
+		@Autowired
+		
+		if(req.getPlayerId()) {
+			
+		}
+		
+	}
+
+}

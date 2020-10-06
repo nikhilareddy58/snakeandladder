@@ -1,0 +1,31 @@
+package com.example.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.model.Ladder;
+import com.example.model.Snake;
+
+@Repository
+public class SnakeDao {
+
+	public static HashMap<Integer, Integer> snakeMap = new HashMap<>();
+	
+	public void initializeSnakes(List<Snake> snakes) {
+		
+		for(Snake snake:snakes) {
+			snakeMap.put(ladder.getStart(), ladder.getEnd());
+		}
+		
+	}
+
+	public void updateGame(int start, int end) {
+		snakeMap.put(start, end);
+	}
+
+	public void getGame(int start) {
+		snakeMap.get(start);
+	}
+}

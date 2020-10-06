@@ -1,0 +1,17 @@
+package com.example.rules;
+
+import com.example.apiutil.UpdateGameReq;
+
+public class DiceCountValidator extends IRuleValidator{
+
+	@Override
+	public void execute(UpdateGameReq req) throws RulesException{
+		
+		if(req.getDiceValue()>6 || req.getDiceValue()<1)
+			throw new Exce
+		
+	}
+	
+	
+
+}

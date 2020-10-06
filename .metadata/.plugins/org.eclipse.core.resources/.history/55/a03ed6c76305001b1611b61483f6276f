@@ -1,0 +1,10 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+public class GameDao {
+	
+	
+	HashMap<Integer, Integer>  gameMap= new HashMap<>();
+
+}

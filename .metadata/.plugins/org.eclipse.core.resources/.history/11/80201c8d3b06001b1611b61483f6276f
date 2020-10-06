@@ -1,0 +1,10 @@
+package com.example.model;
+
+public class Board {
+	
+	private int boardSize;
+	
+	private int[][] grid;
+	
+	
+}

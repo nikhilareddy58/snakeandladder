@@ -1,0 +1,11 @@
+package com.example.model;
+
+public class Car extends Vehicle{
+	
+	private int slotsReq;
+
+	public Car(String registrationId, String userName) {
+		super(registrationId, userName);
+	}
+
+}

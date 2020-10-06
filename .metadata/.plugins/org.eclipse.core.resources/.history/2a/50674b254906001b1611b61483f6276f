@@ -1,0 +1,19 @@
+package com.example.dao;
+
+public class PlayerDao {
+	
+	
+    public void createPlayers(int size) {
+    	boardMatrix=new int[size][size];
+    }
+    
+    public void updatePlayer(int i, int j, int value) {
+    	boardMatrix[i][j]=value;
+    }
+    
+    public int getPlayer(int i, int j) {
+    	return boardMatrix[i][j];
+    }
+
+
+}

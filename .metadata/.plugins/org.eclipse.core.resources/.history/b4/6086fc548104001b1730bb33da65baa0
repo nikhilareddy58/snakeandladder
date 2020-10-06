@@ -1,0 +1,21 @@
+package com.example.model;
+
+public class Car extends Vehicle{
+	
+	private int slotsReq;
+	
+	public Car() {
+		this.slotsReq=4;
+	}
+
+	public int getSlotsReq() {
+		return slotsReq;
+	}
+
+	public void setSlotsReq(int slotsReq) {
+		this.slotsReq = slotsReq;
+	}
+
+	
+	
+}

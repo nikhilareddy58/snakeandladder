@@ -1,0 +1,23 @@
+package com.example.rules;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.apiutil.UpdateGameReq;
+
+public class RulesExecutor {
+	
+	@Autowired
+	DiceCountValidator diceValidator;
+	
+	@Autowired
+	PlayerIdValidator playerIdValidator;
+	
+	public void executeAllUpdateMoveRules(UpdateGameReq req)  {
+		
+		diceValidator.setNextExecutor(playerIdValidator);
+		diceValidator.executeRule(req);
+		
+		
+	}
+
+}

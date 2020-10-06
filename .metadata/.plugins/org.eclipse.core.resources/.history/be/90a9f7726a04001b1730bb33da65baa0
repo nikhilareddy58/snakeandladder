@@ -1,0 +1,12 @@
+package com.example.model;
+
+public abstract class Vehicle {
+	
+	
+	private String registrationId;
+	
+	private String userName;
+	
+	
+
+}

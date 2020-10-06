@@ -1,0 +1,13 @@
+package com.example.rules;
+
+import com.example.apiutil.UpdateGameReq;
+
+public abstract class IRuleExecutor {
+	
+	
+	public void executeRule(UpdateGameReq req) {
+		
+	} 
+	
+
+}

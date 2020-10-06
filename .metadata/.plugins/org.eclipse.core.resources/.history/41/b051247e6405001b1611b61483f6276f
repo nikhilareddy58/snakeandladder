@@ -1,0 +1,20 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public class SnakeDao {
+	
+public static HashMap<Integer, Integer>  snakeMap= new HashMap<>();
+	
+	public void updateGame(int start,int end){
+		snakeMap.put(start, end);
+	}
+	
+	public void getGame(int start){
+		snakeMap.get(start);
+	}
+}

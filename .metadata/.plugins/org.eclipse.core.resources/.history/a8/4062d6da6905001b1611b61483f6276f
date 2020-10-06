@@ -1,0 +1,5 @@
+package com.example.apiutil;
+
+public class UpdateGameReq {
+
+}

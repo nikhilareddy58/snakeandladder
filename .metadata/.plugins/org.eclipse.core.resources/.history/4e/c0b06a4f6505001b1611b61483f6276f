@@ -1,0 +1,22 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.model.Player;
+
+@Repository
+public class PlayerDao {
+
+	
+	public static HashMap<Integer, Player> playerMap = new HashMap<>();
+	
+	public PlayerDao() {
+		playerMap.put(1, new Player(1));
+		playerMap.put(2, new Player(1));
+		playerMap.put(3, new Player(1));
+		playerMap.put(4, new Player(1));
+
+	}
+}

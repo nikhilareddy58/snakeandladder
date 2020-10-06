@@ -1,0 +1,11 @@
+package com.example.model;
+
+public class Bus extends Vehicle{
+	
+	
+
+	public Bus() {
+		super.setSlotsReq(1);
+	}
+	
+}

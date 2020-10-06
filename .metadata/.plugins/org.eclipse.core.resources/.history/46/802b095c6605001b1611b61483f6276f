@@ -1,0 +1,33 @@
+package com.example.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.model.Ladder;
+import com.example.model.Player;
+
+
+@Repository
+public class LadderDao {
+	
+	public static HashMap<Integer, Integer>  ladderMap= new HashMap<>();
+	
+	public void initializeLadders(List<Ladder> ladders) {
+		
+		for(Ladder player:ladders) {
+			ladderMap.put(player.getUserId(), player);
+		}
+		
+	}
+	
+	public void updateGame(int start,int end){
+		ladderMap.put(start, end);
+	}
+	
+	public void getGame(int start){
+		ladderMap.get(start);
+	}
+
+}

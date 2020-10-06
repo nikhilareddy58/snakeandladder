@@ -1,0 +1,69 @@
+package com.example.service;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dao.BoardDao;
+import com.example.model.Board;
+import com.example.model.GameStatus;
+import com.example.model.Player;
+
+@Service
+public class GameService {
+	
+	final int BOARD_SIZE=3;
+	static Queue<Player> players;
+
+	
+	@Autowired
+	PlayerService playerService;
+	
+	@Autowired
+	BoardDao boardDao;
+	
+	public Board initializeBoard() {
+		
+		Board board= new Board();
+		players= new LinkedList<Player>();
+		
+		//initialize players
+		
+		
+		players.add(new Player(1,"Nik1"));
+		players.add(new Player(2,"Nik2"));
+		players.add(new Player(3,"Nik3"));
+		players.add(new Player(4,"Nik4"));
+		players.add(new Player(5,"Nik5"));
+
+		board.setPlayers(players);
+		playerService.initializePlayers(players);
+		
+		
+		//initialize board states
+		board.setGrid(new int[BOARD_SIZE][BOARD_SIZE]);
+		boardDao.initializeBoard(BOARD_SIZE);
+		
+		//set game status
+		board.setGameStatus(GameStatus.INPROGRESS);
+		
+		//setcurrent player
+		board.setCurrentPlayer(getCurrentPlayer());
+		
+		
+		return board;
+	}
+	
+	private int getCurrentPlayer() {
+		return players.peek().getPlayerId();
+	}
+	
+	private void updateCurrentPlayer() {
+		players.add(players.poll());
+	}
+
+}

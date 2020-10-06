@@ -1,0 +1,25 @@
+package com.example.rules;
+
+import com.example.apiutil.UpdateMoveReq;
+
+public class AbstractRuleValidator {
+	
+	private AbstractRuleValidator nextRuleValidator;
+
+
+	public void setAbstractRuleValidator(AbstractRuleValidator abstractRuleValidator) {
+		this.abstractRuleValidator = abstractRuleValidator;
+	}
+	
+	public void executeRule(UpdateMoveReq updateMoveReq) {
+		execute(updateMoveReq);
+		if(this.abstractRuleValidator!=null) {
+			
+		}
+		
+	}
+	
+	public abstract void execute(UpdateMoveReq updateMoveReq) ;
+
+
+}

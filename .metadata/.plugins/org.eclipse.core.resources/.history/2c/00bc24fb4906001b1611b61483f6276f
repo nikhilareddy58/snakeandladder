@@ -1,0 +1,43 @@
+package com.example.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.model.Board;
+import com.example.model.Player;
+
+@Service
+public class GameService {
+	
+	final int BOARD_SIZE=3;
+	
+	@Autowired
+	PlayerService playerService;
+	
+	public Board initializeBoard() {
+		
+		Board board= new Board();
+		
+		//initialize players
+		
+		List<Player> players= new ArrayList<Player>();
+		
+		players.add(new Player(1,"Nik1"));
+		players.add(new Player(2,"Nik2"));
+		players.add(new Player(3,"Nik3"));
+		players.add(new Player(4,"Nik4"));
+		players.add(new Player(5,"Nik5"));
+
+		playerService.initializePlayers(players);
+		
+		
+		return board;
+	}
+	
+	
+	
+
+}

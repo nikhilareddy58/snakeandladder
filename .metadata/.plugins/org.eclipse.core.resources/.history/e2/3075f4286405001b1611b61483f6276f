@@ -1,0 +1,18 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+public class GameDao {
+	
+	
+	public static HashMap<Integer, Integer>  gameMap= new HashMap<>();
+	
+	public void updateGame(int player,int position){
+		gameMap.put(player, position);
+	}
+	
+	public void getGame(int player,int position){
+		gameMap.put(player, position);
+	}
+
+}

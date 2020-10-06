@@ -1,0 +1,27 @@
+package com.example.apiutil;
+
+public class UpdateGameResponse {
+	
+	private int newPosition;
+	
+	private int currentPlayer;
+
+	public int getNewPosition() {
+		return newPosition;
+	}
+
+	public void setNewPosition(int newPosition) {
+		this.newPosition = newPosition;
+	}
+
+	public int getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(int currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+	
+	
+
+}

@@ -1,0 +1,30 @@
+package com.example.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.example.model.Player;
+
+public class PlayerDao {
+	
+	static HashMap<Integer, Player> playersMap= new HashMap<>(); 
+	
+	
+    public void createPlayers(List<Player> players) {
+    	
+    	for(Player player:players) {
+    		playersMap.put(player.getPlayerId(), player);
+    	}
+    	
+    }
+    
+    public void updatePlayer(int i, int j, int value) {
+    	boardMatrix[i][j]=value;
+    }
+    
+    public int getPlayer(int i, int j) {
+    	return boardMatrix[i][j];
+    }
+
+
+}

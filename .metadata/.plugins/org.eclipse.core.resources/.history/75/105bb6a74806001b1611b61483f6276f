@@ -1,0 +1,22 @@
+package com.example.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.model.Board;
+
+@Service
+public class GameService {
+	
+	final int BOARD_SIZE=3;
+	
+	public Board initializeBoard() {
+		
+		Board board= new Board();
+		
+		List<Player> players= new ArrayList<Player>();
+	}
+	
+	
+	
+
+}

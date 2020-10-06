@@ -1,0 +1,84 @@
+package com.example.parkinglot.service;
+
+import java.util.HashMap;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.example.parkinglot.entity.Assistant;
+import com.example.parkinglot.entity.Customer;
+import com.example.parkinglot.entity.FourWheeler;
+import com.example.parkinglot.entity.FourWheelerSlot;
+import com.example.parkinglot.entity.PARKINGSTATUS;
+import com.example.parkinglot.entity.Parking;
+import com.example.parkinglot.entity.Slot;
+import com.example.parkinglot.entity.TwoWheeler;
+import com.example.parkinglot.entity.TwoWheelerSlot;
+import com.example.parkinglot.entity.Vehicle;
+
+/**
+ * @author rachanikhila
+ *
+ */
+@Service
+public class ParkingService {
+		
+	@Autowired
+	TwoWheelerSlotService twoWheelerSlotService;
+	
+	@Autowired
+	FourWheelerSlotService fourWheelerSlotService;
+    
+	@Autowired
+	ParkingAssistantService parkingAssistantService;
+	
+	HashMap<String, Parking> vehicleDetails;
+	
+	public ParkingService() {
+		vehicleDetails = new HashMap<>();
+	}
+	
+	
+	public Parking allocateParking(Customer cus,String assitantId, Vehicle vehicle ) {
+		Assistant assistant= parkingAssistantService.assistantMap.get(assitantId);
+		Parking parking = new Parking(vehicle, null, null, null, cus, assistant);
+		parking.setParkingId(this.generateParkingId());
+		parking.setSlot(this.getSlot(vehicle));
+		parking.setParkingstatus(PARKINGSTATUS.OPEN);
+		vehicleDetails.put(vehicle.getRegNo(), parking);
+		return parking;
+	}
+	
+	
+	public String generateParkingId() {
+		return UUID.randomUUID().toString();
+	}
+	
+	/**
+	 * 
+	 * @param vehicle
+	 * @return
+	 */
+	public synchronized Slot getSlot(Vehicle vehicle) {
+		Slot slot = null;
+		if(vehicle instanceof TwoWheeler) {
+			slot= new TwoWheelerSlot(twoWheelerSlotService.getTwoWheelerSlot(), "true");
+			return slot;
+		}
+		if(vehicle instanceof FourWheeler) {
+			slot= new FourWheelerSlot(fourWheelerSlotService.getFourWheelerSlot(), "true");
+		}
+		return slot;		
+	}
+	
+	public void freeParkingService(Vehicle vehicle) {
+		Parking parking= vehicleDetails.get(vehicle.getRegNo());
+		if(vehicle instanceof TwoWheeler) {
+			twoWheelerSlotService.freeASlot(parking.getSlot().getSlotNo());
+		}
+		if(vehicle instanceof FourWheeler) {
+			twoWheelerSlotService.freeASlot(parking.getSlot().getSlotNo());
+		}
+	}
+
+}

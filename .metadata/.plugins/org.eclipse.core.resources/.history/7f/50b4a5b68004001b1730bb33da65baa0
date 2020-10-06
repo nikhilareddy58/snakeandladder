@@ -1,0 +1,47 @@
+package com.example.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dao.SlotDao;
+import com.example.exception.NoSlotException;
+import com.example.model.Slot;
+
+@Service
+public class SlotService {
+
+	@Autowired
+	SlotDao slotDao;
+
+	final int MAX_CAPACITY = 60;
+
+	public void intitializeSlots() {
+		for (int i = 1; i < MAX_CAPACITY; i++) {
+			slotDao.updateSlots(i, true);
+		}
+
+	}
+
+	public int getSlots(int capacity) throws Exception{
+		int i=0;
+		while(i<MAX_CAPACITY) {
+			int count=0;
+			while(count<capacity) {
+				
+				if(slotDao.getSlots(i)) {
+					count++;
+				}else {
+					break;
+				}
+				if(count==capacity) {
+					return i-count;
+				}
+			}
+		}
+		throw new NoSlotException();
+	}
+
+}

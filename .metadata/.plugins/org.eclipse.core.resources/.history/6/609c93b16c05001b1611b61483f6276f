@@ -1,0 +1,84 @@
+package com.example.service;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dao.LadderDao;
+import com.example.dao.PlayerDao;
+import com.example.dao.SnakeDao;
+import com.example.model.Board;
+import com.example.model.Ladder;
+import com.example.model.Player;
+import com.example.model.Snake;
+
+@Service
+public class GameService {
+
+	final static int NO_OF_PLAYERS = 4;
+
+	@Autowired
+	PlayerDao playerDao;
+
+	@Autowired
+	LadderDao ladderDao;
+	
+	@Autowired
+	SnakeDao snakeDao;
+	
+	@Autowired
+	
+	static Board board= new Board();
+	static List<Player> playersList = new LinkedList<Player>();
+	static List<Ladder> ladders = new ArrayList<>();
+	static List<Snake> snakes = new ArrayList<>();
+
+
+	public void intializeGame() {
+
+		// createUsers
+
+		for (int i = 0; i < NO_OF_PLAYERS; i++) {
+			playersList.add(new Player(i,0));
+		}
+
+		playerDao.initializePlayers(playersList);
+
+		// initialize ladders
+		ladders.add(new Ladder(10, 34));
+		ladders.add(new Ladder(11, 35));
+		ladders.add(new Ladder(30, 40));
+
+		ladderDao.initializeLadders(ladders);
+
+		// initialize ladders
+		snakes.add(new Snake(44, 20));
+		snakes.add(new Snake(58, 12));
+		snakes.add(new Snake(79, 32));
+
+		snakeDao.initializeSnakes(snakes);
+		
+		board.setCurrentPlayer(playersList.get(0).getUserId());
+
+	}
+
+	
+	public Board updateMove(int player,int diceValue) {
+		//validate
+		Player tempPlayer=playerDao.getPlayer(player);
+		int newposition=tempPlayer.getPosition()+diceValue;
+		if(snakeDao.isSnake(newposition)) {
+			newposition= snakeDao.getSnake(newposition);
+		}
+		if(ladderDao.isLadder(newposition)) {
+			newposition= ladderDao.getLadder(newposition);
+		}
+		
+		return board;
+		
+	}
+	
+}

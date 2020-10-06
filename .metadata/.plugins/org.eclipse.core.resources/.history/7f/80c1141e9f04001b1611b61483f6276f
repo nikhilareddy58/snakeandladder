@@ -1,0 +1,49 @@
+package com.example.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dao.ParkingDao;
+import com.example.model.Parking;
+import com.example.model.Vehicle;
+
+@Service
+public class ParkingService {
+	
+	@Autowired
+	SlotService slotService;
+	
+	@Autowired
+	ParkingDao parkingDao;
+	
+	static int count=0;
+	
+	public Parking createParking(Vehicle vehicle,String type) throws Exception {
+		
+		vehicle=VehicleFactory.getVehicle(type, vehicle);
+		int slot=slotService.getSlots(vehicle.getSlotsReq());
+		Parking parking= new Parking();
+		parking.setAllocatedSlot(slot);
+		parking.setParkedVehicle(vehicle);
+		parking.setParkingId(getparkingId());
+		parking.setParkingStatus("inprogress");
+		return parking;
+		
+	}
+	
+    public Parking updateParking(int parkingId) throws Exception {
+    	Parking temp=parkingDao.getParking(parkingId);
+		slotService.updateSlot(temp.getAllocatedSlot(), true);
+		temp.setParkingStatus("completed");
+		parkingDao.createParking(parking)
+		return parking;
+		
+	}
+	
+	private synchronized int getparkingId() {
+		return count++;
+	}
+	
+	
+
+}

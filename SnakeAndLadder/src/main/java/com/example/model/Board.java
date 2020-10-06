@@ -1,0 +1,71 @@
+package com.example.model;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Queue;
+
+public class Board {
+	
+	private Queue<Player> playersList;
+	
+	private List<Ladder> ladders;
+	
+	private List<Snake> snakes;
+	
+	private HashMap<Integer,Integer> playerPieces;
+	
+	private int currentPlayer;
+	
+	private GameStatus gameStatus;
+	
+	public List<Ladder> getLadders() {
+		return ladders;
+	}
+
+	public void setLadders(List<Ladder> ladders) {
+		this.ladders = ladders;
+	}
+
+	public List<Snake> getSnakes() {
+		return snakes;
+	}
+
+	public void setSnakes(List<Snake> snakes) {
+		this.snakes = snakes;
+	}
+
+	public HashMap<Integer, Integer> getPlayerPieces() {
+		return playerPieces;
+	}
+
+	public void setPlayerPieces(HashMap<Integer, Integer> playerPieces) {
+		this.playerPieces = playerPieces;
+	}
+
+	public int getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(int currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	
+	public Queue<Player> getPlayersList() {
+		return playersList;
+	}
+
+	public void setPlayersList(Queue<Player> playersList) {
+		this.playersList = playersList;
+	}
+
+	public GameStatus getGameStatus() {
+		return gameStatus;
+	}
+
+	public void setGameStatus(GameStatus gameStatus) {
+		this.gameStatus = gameStatus;
+	}
+	
+
+}

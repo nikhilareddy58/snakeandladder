@@ -1,0 +1,32 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+import com.example.model.Parking;
+
+public class ParkingDao {
+
+	
+    public HashMap<Integer,Parking> parkingMap;
+	
+	final int MAX_CAPACITY=60;
+	
+	public HashMap<Integer,Parking> createParking(Parking parking){
+		parkingMap.put(parking.getParkingId(), parking);
+		return this.parkingMap;
+		
+		
+	}
+	
+	public HashMap<Integer,Boolean> getSlots(int slotId){
+		this.slotsMap.get(slotId);
+		return slotsMap;
+		
+	}
+	
+	public HashMap<Integer,Boolean> removeSlots(int slotId){
+		this.slotsMap.remove(slotId);
+		return slotsMap;
+		
+	}
+}

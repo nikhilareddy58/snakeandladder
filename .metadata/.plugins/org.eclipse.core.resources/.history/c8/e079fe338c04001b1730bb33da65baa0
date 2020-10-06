@@ -1,0 +1,34 @@
+package com.example.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.example.model.Parking;
+import com.example.model.Vehicle;
+
+@Service
+public class ParkingService {
+	
+	@Autowired
+	SlotService slotService;
+	
+	static int count=0;
+	
+	public Parking createParking(Vehicle vehicle,String type) {
+		
+		vehicle=VehicleFactory.getVehicle(type, vehicle);
+		int slot=slotService.getSlots(vehicle.getSlotsReq());
+		Parking parking= new Parking();
+		parking.setAllocatedSlot(slot);
+		parking.setParkedVehicle(vehicle);
+		parking.setParkingId(parkingId);
+		return 
+		
+	}
+	
+	private synchronized int getparkingId() {
+		return count++;
+	}
+	
+	
+
+}

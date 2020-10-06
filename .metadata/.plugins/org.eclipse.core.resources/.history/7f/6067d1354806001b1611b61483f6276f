@@ -1,0 +1,26 @@
+package com.example.model;
+
+public class Board {
+	
+	private int boardSize;
+	
+	private int[][] grid;
+
+	public int getBoardSize() {
+		return boardSize;
+	}
+
+	public void setBoardSize(int boardSize) {
+		this.boardSize = boardSize;
+	}
+
+	public int[][] getGrid() {
+		return grid;
+	}
+
+	public void setGrid(int[][] grid) {
+		this.grid = grid;
+	}
+	
+	
+}

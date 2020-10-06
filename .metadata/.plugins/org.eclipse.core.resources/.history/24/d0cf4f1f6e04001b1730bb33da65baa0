@@ -1,0 +1,30 @@
+package com.example.dao;
+
+import java.util.HashMap;
+
+public class SlotDao {
+	
+	public HashMap<Integer,Boolean> slotsMap;
+	
+	public HashMap<Integer,Boolean> createSlots(){
+		this.slotsMap.put(slotId,isAvailable);
+		return slotsMap;
+		
+	}
+	
+	public HashMap<Integer,Boolean> updateSlots(int slotId, boolean isAvailable){
+		this.slotsMap.put(slotId,isAvailable);
+		return slotsMap;
+		
+	}
+	
+	public HashMap<Integer,Boolean> updateSlots(int slotId, boolean isAvailable){
+		this.slotsMap.put(slotId,isAvailable);
+		return slotsMap;
+		
+	}
+
+
+	
+
+}
